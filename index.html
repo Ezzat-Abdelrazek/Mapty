@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="./images/icon.png"
+      type="image/png"
+      sizes="100x100"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+      integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="./leaflet-routing-machine-3.2.12/dist/leaflet-routing-machine.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Mapty // Map Your Workouts</title>
+
+    <script
+      src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+      integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+      crossorigin=""
+    ></script>
+    <script src="./leaflet-routing-machine-3.2.12/dist/leaflet-routing-machine.js"></script>
+    <script src="./index.js" defer></script>
+  </head>
+  <body>
+    <main class="main">
+      <div class="msg msg--path msg--path-1">Please submit two workouts</div>
+      <div class="msg msg--path msg--path-2">To draw a path in between</div>
+      <section class="sidebar">
+        <div class="nav-box">
+          <div class="nav__btn-group">
+            <div class="nav__btn-box nav__btn-box--front">
+              <button class="btn nav__btn nav__btn--front">
+                <span></span>
+              </button>
+            </div>
+            <div class="nav__btn-box nav__btn-box--back">
+              <button class="btn nav__btn nav__btn--back">
+                <span></span>
+              </button>
+            </div>
+          </div>
+          <nav class="nav nav--hidden">
+            <ul class="nav__list">
+              <li class="nav__item">
+                <button class="btn nav__item-btn btn--path">
+                  1- Draw Path
+                </button>
+              </li>
+              <li class="nav__item">
+                <button class="btn nav__item-btn btn--clear">
+                  2- Clear Workouts
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="logo-box">
+          <img class="logo" src="./images/logo.png" alt="Mapty Logo" />
+        </div>
+        <form action="#" class="form hidden u-display-none">
+          <div class="form__group">
+            <label for="type" class="form__label">Type</label>
+            <select
+              name="workout-type"
+              id="type"
+              class="form__select form__input"
+            >
+              <option value="running">Running</option>
+              <option value="cycling">Cycling</option>
+            </select>
+          </div>
+          <div class="form__group">
+            <label for="distance" class="form__label">Distance</label>
+            <input
+              type="text"
+              id="distance"
+              placeholder="km"
+              class="form__input form__input--distance"
+            />
+          </div>
+          <div class="form__group">
+            <label for="duration" class="form__label">Duration</label>
+            <input
+              type="text"
+              id="duration"
+              placeholder="min"
+              class="form__input form__input--duration"
+            />
+          </div>
+          <div class="form__group form__group--cadence">
+            <label for="cadence" class="form__label">Cadence</label>
+            <input
+              type="text"
+              id="cadence"
+              placeholder="step/min"
+              class="form__input form__input--cadence"
+            />
+          </div>
+          <div class="form__group form__group--elevation u-display-none">
+            <label for="elevation" class="form__label">Elevation</label>
+            <input
+              type="text"
+              id="elevation"
+              placeholder="meters"
+              class="form__input form__input--elevation"
+            />
+          </div>
+          <button type="submit" class="form__btn"></button>
+        </form>
+        <!-- <article class="workout workout--running">
+          <p class="workout__date">🏃 Running on August 28</p>
+                <p class="workout__distance">🏃 22 <span class="workout__span">km</span></p>
+                <p class="workout__duration">⏱️ 22 <span class="workout__span">min</span></p>
+                <p class="workout__pace">🚶1.0 <span class="workout__span">min/km</span></p>
+                <p class="workout__cadence">🦶 10 <span class="workout__span">spm</span></p>
+              </article>
+              <article class="workout workout--cycling">
+                <p class="workout__date">🚴 Running on August 28</p>
+                <p class="workout__distance"> 🚴22 <span class="workout__span">km</span></p>
+                <p class="workout__duration">⏱️ 22 <span class="workout__span">min</span></p>
+                <p class="workout__pace">🚀1.0 <span class="workout__span">km/h</span></p>
+                <p class="workout__cadence">🚵 10 <span class="workout__span">m</span></p>
+              </article> -->
+        <div class="attribution">&copy;Jonas Schmedtmann</div>
+      </section>
+      <section class="map" id="map"></section>
+    </main>
+  </body>
+</html>
